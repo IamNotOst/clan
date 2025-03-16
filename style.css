@@ -1,0 +1,786 @@
+/* Подключение шрифта */
+
+@font-face {
+  font-family: 'Droid Sans';
+  src: url('font/th_DroidSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Общие стили */
+html {
+  scroll-behavior: smooth; /* Плавная прокрутка для всего документа */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Droid Sans', Arial, sans-serif;
+  background-color: black;
+  color: white;
+  overflow-x: hidden; /* Убираем горизонтальную прокрутку, если она есть */
+  cursor: url('pic/custom-cursor.png') 32 32, auto;
+}
+
+/* Экран загрузки */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeOut 0.2s 5.5s forwards; /* Исчезновение через 3 секунды */
+}
+
+/* Полоса загрузки */
+.loading-bar {
+  width: 300px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Прогресс загрузки */
+.loading-progress {
+  width: 0;
+  height: 100%;
+  background-color: white;
+  border-radius: 3px;
+  animation: fillBar 5s linear forwards; /* Заполнение за 3 секунды */
+}
+
+/* Текст "Loading..." */
+.loading-text {
+  margin-top: 10px;
+  color: white;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* Анимация точек */
+.loading-text::after {
+  content: '';
+  animation: changeDots 1.5s infinite; /* Анимация точек */
+}
+
+/* Анимация заполнения полосы */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Анимация изменения точек */
+@keyframes changeDots {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
+  100% {
+    content: '.';
+  }
+}
+
+/* Анимация исчезновения экрана загрузки */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Основной контент (скрыт до завершения загрузки) */
+.content {
+  display: none;
+  animation: fadeIn 1s 3s forwards; /* Появление через 3 секунды */
+}
+
+/* Анимация появления контента */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: moveStars 50s linear infinite;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Навигационные кнопки */
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative; /* Для позиционирования псевдоэлемента */
+}
+
+/* Тонкая белая полоса под навигацией */
+.navigation::after {
+  content: "";
+  position: absolute;
+  bottom: -20px; /* Увеличиваем отступ снизу */
+  left: 0;
+  width: 100%;
+  height: 1px; /* Толщина полосы */
+  background: linear-gradient(to right, transparent, white, transparent); /* Градиент для эффекта */
+}
+
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 5px 5px;
+  border: 2px solid white;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  outline: none; /* Убираем синий прямоугольник при фокусе */
+}
+
+.nav-button:active, .nav-button:focus {
+  outline: none; /* Убираем синий прямоугольник при нажатии */
+  box-shadow: none; /* Убираем тень (если есть) */
+}
+
+.nav-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Стили для блока с текстом */
+.info-text {
+  text-align: left; /* Выравнивание текста по левому краю */
+  margin: 2px auto 100px; /* Отступ сверху и снизу */
+  padding: 20px;
+  width: calc(100% - 100px); /* Ширина карточки создателя клана */
+  background: rgba(255, 255, 255, 0.05); /* Легкий фон для выделения */
+  border-radius: 15px; /* Закругленные углы */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Легкая рамка */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-text:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.info-text p {
+  margin: -2.5px 0; /* Отступы между строками */
+  font-size: 0.9rem; /* Размер шрифта */
+  color: #ccc; /* Цвет текста */
+}
+
+.info-text b {
+  color: white; /* Цвет жирного текста */
+}
+
+.info-text i {
+  color: #aaa; /* Цвет курсивного текста */
+}
+
+.info-text u {
+  text-decoration: underline; /* Подчеркивание */
+}
+
+.info-text hr {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1); /* Горизонтальная линия */
+  margin: 20px 20px; /* Отступы вокруг линии */
+}
+
+/* Стили для заголовка и подзаголовка */
+.title-container {
+  text-align: center; /* Центрирование текста */
+  margin-top: 20px; /* Отступ сверху */
+  margin-bottom: 40px; /* Отступ снизу */
+  position: relative; /* Относительное позиционирование */
+}
+
+.title {
+  font-size: 3rem;
+  text-shadow: 0 0 7px white;
+  margin-bottom: 10px; /* Отступ снизу */
+}
+
+.title .subtitle {
+  display: block; /* Размещаем текст на новой строке */
+  font-size: 0.8rem; /* Меньший размер шрифта */
+  color: #aaa; /* Светло-серый цвет */
+  text-align: center;
+  margin-top: -10px; /* Отступ сверху */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.05); /* Легкая тень */
+}
+
+/* Контейнер для основного контента */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh; /* Минимальная высота контейнера на весь экран */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Распределение пространства между элементами */
+}
+
+/* Футер */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto; /* Футер прижимается к низу */
+}
+
+/* Контейнер для кнопки с подсказкой */
+.info-button-container {
+  margin-right: auto; /* Сдвигаем кнопку влево */
+}
+
+/* Стили для кнопки с подсказкой */
+.info-button {
+  width: 27px; /* Квадратная кнопка */
+  height: 27px;
+  border: 2px solid white;
+  border-radius: 8px; /* Закругленные края */
+  background-color: transparent;
+  color: white;
+  font-size: 1.0rem;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+  position: relative;
+}
+
+/* Уменьшение кнопки при наведении */
+.info-button:hover {
+  transform: scale(0.95);
+  background-color: white;
+  color: black;
+}
+
+/* Подсказка */
+.info-button::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%; /* Подсказка появляется под кнопкой */
+  left: 0; /* Выравниваем по левому краю кнопки */
+  width: 300px; /* Ширина подсказки */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.65); /* Чёрный с прозрачностью 85% */
+  color: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  white-space: pre-line; /* Сохраняем переносы строк */
+  z-index: 10000; /* Убедимся, что подсказка поверх всех элементов */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Добавим тень для красоты */
+  backdrop-filter: blur(0.1px);
+}
+
+/* Показ подсказки при наведении */
+.info-button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Карточки */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Легкая рамка */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@keyframes fadeIn {
+       from { opacity: 0; transform: translateY(20px); }
+       to { opacity: 1; transform: translateY(0); }
+     }
+     .card {
+       animation: fadeIn 2.5s ease-in-out;
+     }
+
+.card:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Блок главы клана */
+.chief-card {
+  width: calc(99% - 20px);
+  margin: 20px auto 200px; /* Расстояние такое же, как между карточками участников */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.vip-icon {
+  width: 50px; /* Размер иконки */
+  height: 50px;
+  vertical-align: text-top; /* Выравнивание по верхнему краю текста */
+  margin-left: 0.4px; /* Отступ слева от текста */
+  position: relative; /* Для точного позиционирования */
+  top: -15px; /* Смещение вверх */
+}
+
+.verify-icon {
+  width: 10px; /* Размер иконки */
+  height: 10px;
+  vertical-align: middle; /* Выравнивание по центру относительно текста */
+  margin-left: 2px; /* Отступ слева от текста */
+  position: relative; /* Для кастомной подсказки */
+  top: -2.5px; /* Смещение вверх */
+  display: inline-block; /* Добавлено для корректного отображения подсказки */
+}
+
+/* Разделитель после карточки создателя */
+.chief-card::after {
+  content: "";
+  display: block;
+  width: 100%; /* Занимает всю ширину контейнера */
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 20px auto; /* Отступ сверху и снизу */
+}
+
+.chief-card .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  border: 2px solid white;
+  margin-bottom: 15px;
+}
+
+.chief-card .info {
+  text-align: center;
+}
+
+.chief-card .nickname {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.chief-card .id {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.chief-card .description {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Сетка для помощников */
+.helpers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+/* Карточки помощников */
+.elder-card {
+  display: flex;
+  align-items: center;
+}
+
+.elder-card .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  border: 2px solid white;
+  margin-right: 15px;
+}
+
+.elder-card .info {
+  flex: 1;
+  text-align: left;
+}
+
+.elder-card .nickname {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.elder-card .id {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.elder-card .description {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Сетка для участников */
+/* Пространство под карточками участников */
+.members {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  margin-bottom: 30px; /* Добавлено пространство снизу */
+}
+
+/* Футер */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+}
+
+footer a {
+  color: #007bff; /* Синий цвет, как у ссылок */
+  text-decoration: underline; /* Подчеркивание */
+  font-weight: bold; /* Жирный шрифт */
+}
+
+footer a:hover {
+  color: #0056b3; /* Цвет при наведении */
+}
+
+footer strong {
+  font-weight: bold; /* Жирный шрифт для "Official Ost" */
+}
+
+.member-card {
+  position: relative;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавное поднятие и увеличение */
+}
+
+.member-card:hover {
+  transform: translateY(-10px) scale(1.05); /* Поднимаем вверх и немного увеличиваем */
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); /* Тень для эффекта поднятия */
+}
+
+.member-card .front,
+.member-card .back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+.member-card .back {
+  position: absolute;
+  top: 10;
+  left: 0;
+  transform: rotateY(180deg);
+}
+
+.member-card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.member-card:hover .back {
+  transform: rotateY(0deg);
+}
+
+/* Стили для задней части карточки */
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px; /* Добавляем отступ сверху */
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-bottom: 10px;
+}
+
+.info {
+  text-align: center;
+}
+
+.nickname {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.id {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .card {
+    padding: 12px;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .nickname {
+    font-size: 1.1rem;
+  }
+
+  .id {
+    font-size: 0.8rem;
+  }
+
+  .info-text {
+    width: calc(100% - 65px); /* Ширина карточки создателя клана */
+    padding: 15px; /* Уменьшаем отступы */
+  }
+
+  .info-text p {
+    font-size: 0.85rem; /* Уменьшаем размер шрифта */
+  }
+  
+  .vip-icon {
+  top: -15px; /* Смещение вверх */
+}
+}
+
+@media (max-width: 992px) {
+  .card {
+    padding: 10px;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .nickname {
+    font-size: 1rem;
+  }
+
+  .id {
+    font-size: 0.7rem;
+  }
+
+  .info-text {
+    width: calc(100% - 65px); /* Ширина карточки создателя клана */
+    padding: 12px; /* Уменьшаем отступы */
+  }
+
+  .info-text p {
+    font-size: 0.75rem; /* Уменьшаем размер шрифта */
+  }
+  
+  .vip-icon {
+  top: -14px; /* Смещение вверх */
+}
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 8px;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nickname {
+    font-size: 0.9rem;
+  }
+
+  .id {
+    font-size: 0.6rem;
+  }
+
+  .info-text {
+    width: calc(100% - 65px); /* Ширина карточки создателя клана */
+    padding: 10px; /* Уменьшаем отступы */
+  }
+
+  .info-text p {
+    font-size: 0.70rem; /* Уменьшаем размер шрифта */
+  }
+  
+  .vip-icon {
+  top: -13px; /* Смещение вверх */
+}
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 6px;
+    margin: 5px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nickname {
+    font-size: 0.8rem;
+  }
+
+  .id {
+    font-size: 0.5rem;
+  }
+
+  .info-text {
+    width: calc(100% - 65px); /* Ширина карточки создателя клана */
+    padding: 8px; /* Уменьшаем отступы */
+  }
+
+  .info-text p {
+    font-size: 0.65rem; /* Уменьшаем размер шрифта */
+  }
+  
+  .vip-icon {
+  top: -13px; /* Смещение вверх */
+}
+
+  .chief-card .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .chief-card .nickname {
+    font-size: 1.2rem;
+  }
+
+  .chief-card .id {
+    font-size: 0.9rem;
+  }
+
+  .chief-card .description {
+    font-size: 0.9rem;
+  }
+
+  .elder-card .avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .elder-card .nickname {
+    font-size: 0.9rem;
+  }
+
+  .elder-card .id {
+    font-size: 0.7rem;
+  }
+
+  .elder-card .description {
+    font-size: 0.7rem;
+  }
+
+  .member-card .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .member-card .nickname {
+    font-size: 0.8rem;
+  }
+
+  .member-card .id {
+    font-size: 0.5rem;
+  }
+
+  .helpers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+
+  .members {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+}
