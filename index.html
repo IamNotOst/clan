@@ -1,0 +1,668 @@
+<!--
+██████████████████████████████████████████████
+██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒█████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▒▒███▒▒▄▀▄▀▒▒██▒▒▄▀▄▀▒▒█████
+██████▒▒▄▀▒▒▒▒▒▒▄▀▒▒███▒▒▒▒▄▀▒▒██▒▒▄▀▒▒▒▒█████
+██████▒▒▄▀▒▒██▒▒▄▀▒▒█████▒▒▄▀▄▀▒▒▄▀▄▀▒▒███████
+██████▒▒▄▀▒▒▒▒▒▒▄▀▒▒▒▒███▒▒▒▒▄▀▄▀▄▀▒▒▒▒███████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▒▒▄▀▒▒▒▒█████████
+██████▒▒▄▀▒▒▒▒▒▒▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▒▒████▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▒▒▒▒▒▒▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████▒▒▒▒▒▒███████████
+██████████████████████████████████████████████
+██████████████████████████████████████████████
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█
+█▒▒▄▀▒▒▒▒▒▒▄▀▒▒█▒▒▄▀▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▄▀▒▒▒▒▒▒█
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▒▒█████████████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▒▒▒▒▒▒▒▒▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▒▒▒▒▒▒▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█████████▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒▒▒▒▒▄▀▒▒█▒▒▒▒▒▒▒▒▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████▒▒▒▒▒▒█████
+██████████████████████████████████████████████
+-->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>___BedWar___</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+██╗░░░░░░█████╗░░█████╗░██████╗░██╗███╗░░██╗░██████╗░
+██║░░░░░██╔══██╗██╔══██╗██╔══██╗██║████╗░██║██╔════╝░
+██║░░░░░██║░░██║███████║██║░░██║██║██╔██╗██║██║░░██╗░
+██║░░░░░██║░░██║██╔══██║██║░░██║██║██║╚████║██║░░╚██╗
+███████╗╚█████╔╝██║░░██║██████╔╝██║██║░╚███║╚██████╔╝
+╚══════╝░╚════╝░╚═╝░░╚═╝╚═════╝░╚═╝╚═╝░░╚══╝░╚═════╝░
+-->
+
+ <!-- Экран загрузки -->
+  <div class="loading-screen">
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+    <div class="loading-text">Loading</div>
+  </div>
+  
+<!--
+░█████╗░░█████╗░███╗░░██╗████████╗███████╗███╗░░██╗
+██╔══██╗██╔══██╗████╗░██║╚══██╔══╝██╔════╝████╗░██║
+██║░░╚═╝██║░░██║██╔██╗██║░░░██║░░░█████╗░░██╔██╗██║
+██║░░██╗██║░░██║██║╚████║░░░██║░░░██╔══╝░░██║╚████║
+╚█████╔╝╚█████╔╝██║░╚███║░░░██║░░░███████╗██║░╚███║
+░╚════╝░░╚════╝░╚═╝░░╚══╝░░░╚═╝░░░╚══════╝╚═╝░░╚══╝
+-->
+
+  <div class="content"></div>
+  <div class="stars"></div>
+  <div class="container">
+  
+<!--
+███╗░░██╗░█████╗░██╗░░░██╗██╗░██████╗░░█████╗░████████╗██╗░█████╗░███╗░░██╗
+████╗░██║██╔══██╗██║░░░██║██║██╔════╝░██╔══██╗╚══██╔══╝██║██╔══██╗████╗░██║
+██╔██╗██║███████║╚██╗░██╔╝██║██║░░██╗░███████║░░░██║░░░██║██║░░██║██╔██╗██║
+██║╚████║██╔══██║░╚████╔╝░██║██║░░╚██╗██╔══██║░░░██║░░░██║██║░░██║██║╚████║
+██║░╚███║██║░░██║░░╚██╔╝░░██║╚██████╔╝██║░░██║░░░██║░░░██║╚█████╔╝██║░╚███║
+╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝
+-->
+
+    <!-- Навигационные кнопки -->
+
+    <div class="navigation">
+      <div class="info-button-container">
+        <button class="info-button" title=" 
+  *Please note: Due to the manual update process, there may be a slight delay between when points are earned and when they appear on the site.
+  
+More detailed information is located at the bottom of the page.">i</button>
+      </div>
+      <!--<a href="#title2" class="nav-button">Alliances</a>-->
+        <a href="#chief" class="nav-button">Chief</a>
+        <a href="#elders" class="nav-button">Elders</a>
+        <a href="#members" class="nav-button">Members</a>
+    </div>
+    
+<!--
+████████╗██╗████████╗██╗░░░░░███████╗
+╚══██╔══╝██║╚══██╔══╝██║░░░░░██╔════╝
+░░░██║░░░██║░░░██║░░░██║░░░░░█████╗░░
+░░░██║░░░██║░░░██║░░░██║░░░░░██╔══╝░░
+░░░██║░░░██║░░░██║░░░███████╗███████╗
+░░░╚═╝░░░╚═╝░░░╚═╝░░░╚══════╝╚══════╝
+-->
+    
+  <div class="title-container">
+    <h1 class="title">
+      ___BedWar___
+      <span class="subtitle">official clan website</span>
+    </h1>
+  </div>
+  
+<!--
+██╗   ░█████╗░░█████╗░██████╗░██████╗░░██████╗██╗
+██║   ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚═╝
+██║   ██║░░╚═╝███████║██████╔╝██║░░██║╚█████╗░░░░
+╚═╝   ██║░░██╗██╔══██║██╔══██╗██║░░██║░╚═══██╗░░░
+██╗   ╚█████╔╝██║░░██║██║░░██║██████╔╝██████╔╝██╗
+╚═╝   ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═════╝░╚═╝
+-->
+    
+<!--
+░█████╗░██╗░░██╗██╗███████╗███████╗
+██╔══██╗██║░░██║██║██╔════╝██╔════╝
+██║░░╚═╝███████║██║█████╗░░█████╗░░
+██║░░██╗██╔══██║██║██╔══╝░░██╔══╝░░
+╚█████╔╝██║░░██║██║███████╗██║░░░░░
+░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝╚═╝░░░░░
+-->
+
+    <!-- Карточка главы клана -->
+<div id="chief" class="card chief-card">
+  <div class="avatar-container">
+    <img src="pic/chief.png" alt="Clan chief" class="avatar">
+  </div>
+  <div class="info">
+    <p class="nickname">
+      <b>BlockmanGoTalk</b>
+      <img src="pic/Vip11.png" alt="VIP 11" class="vip-icon">
+    </p>
+    <p class="id">ID: 3884743936</p>
+    <p class="description">Clan Owner, BW Helper, Game Developer</p>
+  </div>
+</div>
+
+<!--
+███████╗██╗░░░░░██████╗░███████╗██████╗░░██████╗
+██╔════╝██║░░░░░██╔══██╗██╔════╝██╔══██╗██╔════╝
+█████╗░░██║░░░░░██║░░██║█████╗░░██████╔╝╚█████╗░
+██╔══╝░░██║░░░░░██║░░██║██╔══╝░░██╔══██╗░╚═══██╗
+███████╗███████╗██████╔╝███████╗██║░░██║██████╔╝
+╚══════╝╚══════╝╚═════╝░╚══════╝╚═╝░░╚═╝╚═════╝░
+-->
+
+    <!-- Карточки помощников -->
+<div id="elders" class="helpers">
+  <div class="card elder-card">
+    <img src="pic/elder1.png" alt="Elder 1" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>IamNotOst</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 1220407424</p>
+      <p class="description">Elder, BW Builder</p>
+    </div>
+  </div>
+  <div class="card elder-card">
+    <img src="pic/elder2.png" alt="Elder 2" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>Sazaki</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 3782867712</p>
+      <p class="description">Elder, BG Moderator</p>
+    </div>
+  </div>
+  <div class="card elder-card">
+    <img src="pic/elder3.png" alt="Elder 3" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>Ba46..</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 910814478</p>
+      <p class="description">Elder, BW Owner</p>
+    </div>
+  </div>
+  <div class="card elder-card">
+    <img src="pic/elder4.png" alt="Elder 4" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>NikaBGA</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 1002655</p>
+      <p class="description">Elder, YT</p>
+    </div>
+  </div>
+  <div class="card elder-card">
+    <img src="pic/elder5.png" alt="Elder 5" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>Bembo</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 3304720016</p>
+      <p class="description">Elder, YT, BW Builder</p>
+    </div>
+  </div>
+  <div class="card elder-card">
+    <img src="pic/elder6.png" alt="Elder 6" class="avatar">
+    <div class="info">
+      <p class="nickname">
+        <b>Ashatree</b>
+        <img src="pic/verify.png" alt="Verified" class="verify-icon">
+      </p>
+      <p class="id">ID: 2692662464</p>
+      <p class="description">Elder</p>
+    </div>
+  </div>
+</div>
+
+<!--
+███╗░░░███╗███████╗███╗░░░███╗██████╗░███████╗██████╗░░██████╗
+████╗░████║██╔════╝████╗░████║██╔══██╗██╔════╝██╔══██╗██╔════╝
+██╔████╔██║█████╗░░██╔████╔██║██████╦╝█████╗░░██████╔╝╚█████╗░
+██║╚██╔╝██║██╔══╝░░██║╚██╔╝██║██╔══██╗██╔══╝░░██╔══██╗░╚═══██╗
+██║░╚═╝░██║███████╗██║░╚═╝░██║██████╦╝███████╗██║░░██║██████╔╝
+╚═╝░░░░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝╚═════╝░
+-->
+
+    <!-- Карточки участников -->
+    <div id="members" class="members">
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member1.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Fenix</b></p>
+            <p class="id">ID: 1208430798</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Fenix</p>
+          <p class="description">points: 1.7M+</p>
+          <p>VIP: 6</p>
+        </div>
+      </div>
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member2.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>armin</b></p>
+            <p class="id">ID: 1391025598</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">armin</p>
+          <p class="description">points: 1.6M+</p>
+          <p>VIP: 8</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member4.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Mustafa</b></p>
+            <p class="id">ID: 2017929296</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Mustafa</p>
+          <p class="description">points: 1M+</p>
+          <p>VIP: 9</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member3.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Hiro</b></p>
+            <p class="id">ID: 3599868736</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Hiro</p>
+          <p class="description">points: 1M+</p>
+          <p>VIP: 6</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member5.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>RorgRSK</b></p>
+            <p class="id">ID: 1075688158</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">RorgRSK</p>
+          <p class="description">points: 900k+</p>
+          <p>VIP: 10</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member7.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>EnteRun</b></p>
+            <p class="id">ID: 2485702960</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">EnteRun</p>
+          <p class="description">points: 800k+</p>
+          <p>VIP: 4</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member6.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>AYMAN69</b></p>
+            <p class="id">ID: 3731132176</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">AYMAN69</p>
+          <p class="description">points: 800k+</p>
+          <p>VIP: 4</p>
+        </div>
+      </div>
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member8.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>LegenDary</b></p>
+            <p class="id">ID: 2367383006</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">LegenDary</p>
+          <p class="description">points: 700k+</p>
+          <p>VIP: 5</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member9.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Frovem</b></p>
+            <p class="id">ID: 3799860224</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Frovem</p>
+          <p class="description">points: 600k+</p>
+          <p>VIP: 9</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member10.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Kris_STK</b></p>
+            <p class="id">ID: 773043310</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Kris_STK</p>
+          <p class="description">points: 600k+</p>
+          <p>VIP: 7</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member11.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>ShahBG.</b></p>
+            <p class="id">ID: 2682605168</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">ShahBG.</p>
+          <p class="description">points: 500k+</p>
+          <p>VIP: 4</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member12.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Sheragi</b></p>
+            <p class="id">ID: 1064162014</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Sheragi</p>
+          <p class="description">points: 500k+</p>
+          <p>VIP: 2</p>
+        </div>
+      </div>
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member14.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>SanchitBG</b></p>
+            <p class="id">ID: 3176305088</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">SanchitBG</p>
+          <p class="description">points: 400k+</p>
+          <p>VIP: 8</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member15.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>f_u_n_dd</b></p>
+            <p class="id">ID: 835224896</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">f_u_n_dd</p>
+          <p class="description">points: 400k+</p>
+          <p>VIP: 6</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member19.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Torox</b></p>
+            <p class="id">ID: 409168127</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Torox</p>
+          <p class="description">points: 400k+</p>
+          <p>VIP: 7</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member16.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Notch@all</b></p>
+            <p class="id">ID: 2383236894</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Notch@all</p>
+          <p class="description">points: 400k+</p>
+          <p>VIP: 0</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member17.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>(ITS_IDK)</b></p>
+            <p class="id">ID: 315096559</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">(ITS_IDK)</p>
+          <p class="description">points: 300k+</p>
+          <p>VIP: 9</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member18.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>CinlayBG</b></p>
+            <p class="id">ID: 2329934622</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">CinlayBG</p>
+          <p class="description">points: 300k+</p>
+          <p>VIP: 3</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member20.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>Kuyami</b></p>
+            <p class="id">ID: 2815824848</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">Kuyami</p>
+          <p class="description">points: 300k+</p>
+          <p>VIP: 8</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member21.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>DEVOURED</b></p>
+            <p class="id">ID: 400750559</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">DEVOURED</p>
+          <p class="description">points: 300k+</p>
+          <p>VIP: 10</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="pic/member22.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>XSaturn</b></p>
+            <p class="id">ID: 807066558</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">XSaturn</p>
+          <p class="description">points: 100k+</p>
+          <p>VIP: 8</p>
+        </div>
+      </div> 
+      <div class="card member-card">
+        <div class="front">
+          <img src="member23.png" alt="Member" class="avatar">
+          <div class="info">
+            <p class="nickname"><b>UttKaRsH</b></p>
+            <p class="id">ID: 3060242350</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="nickname">UttKaRsH</p>
+          <p class="description">points: 100k+</p>
+          <p>VIP: 9</p>
+        </div>
+      </div> 
+      
+      <!-- Добавьте остальные карточки участников аналогично -->
+    </div>
+  </div>
+  
+<!--
+░██████╗░█████╗░██████╗░██╗██████╗░████████╗
+██╔════╝██╔══██╗██╔══██╗██║██╔══██╗╚══██╔══╝
+╚█████╗░██║░░╚═╝██████╔╝██║██████╔╝░░░██║░░░
+░╚═══██╗██║░░██╗██╔══██╗██║██╔═══╝░░░░██║░░░
+██████╔╝╚█████╔╝██║░░██║██║██║░░░░░░░░██║░░░
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░░░░░░░╚═╝░░░
+-->
+
+  <script>
+    document.querySelectorAll('.nav-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+  
+<!-- Добавьте этот блок перед футером -->
+<div class="info-rules-alliances-container">
+  <div class="info-card">
+    <h2>• Information •</h2> <!-- Заголовок вынесен за пределы скрываемого содержимого -->
+    <div class="info-content">
+      <div class="info-text">
+        <p><b>🏠 This is the official website for the _BedWar_ clan in Blockman GO. 🛡</b></p>
+        <p>  ┃ </p>
+        <p>  ┠ Some player nicknames may be shortened to save space on the site. 📝</p>
+        <p>  ┃ </p>
+        <p>  ┖ All player IDs listed are authentic. 💯</p>
+        <p>ㅤ</p>
+        <p><b>📊 Player Points are updated after each 100,000 points milestone.</b> Examples: 👇</p>
+        <p>  ┃ </p>
+        <p>  ┠ 100k+, 200k+, 300k+, ..., 900k+</p>
+        <p>  ┠ 1M+, 1.1M+, 1.2M+, ..., 2M+</p>
+        <p>  ┃ </p>
+        <p>  ┠ Only who have 100,000+ points are displayed on the site.</p>
+        <p>  ┃ </p>
+        <p>  ┖ <u>Website info is manually updated every few days</u>. 🗓️</p>
+        <p>ㅤ</p>
+        <hr>
+        <p><i>*<u>Please note</u>: Due to the manual update process, there may be a slight delay between when points are earned and when they appear on the site.</i></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-card">
+    <h2>• Clan Rules •</h2> <!-- Заголовок вынесен за пределы скрываемого содержимого -->
+    <div class="rules-content">
+      <div class="rules-text">
+        <p><b>1. 🚫 No Spamming</b> </p>
+        <p>   <b>┖</b> Avoid sending repetitive or irrelevant messages.   </p>
+        <p> ㅤ</p>
+        <p><b>2. 🔞 No 18+ Content</b> </p>
+        <p>   <b>┖</b> Do not send or share any inappropriate images or materials.   </p>
+        <p> ㅤ</p>
+        <p><b>3. 🤬 No Bad Language</b> </p>
+        <p>   <b>┖</b> Refrain from using offensive or abusive words.   </p>
+        <p> ㅤ</p>
+        <p><b>4. 💰 No Begging for Money</b> </p>
+        <p>   <b>┖</b> Do not ask other members for financial assistance.   </p>
+        <p> ㅤ</p>
+        <p><b>5. 🌍 No Racism</b> </p>
+        <p>   <b>┖</b> Treat everyone with respect, regardless of their race or ethnicity.   </p>
+        <p> ㅤ</p>
+        <p><b>6. 🕊️ No Religious Arguments</b> </p>
+        <p>   <b>┖</b> Avoid debates or conflicts about religion.   </p>
+        <p> ㅤ</p>
+        <p><b>7. 👴 No Asking for Elders</b> </p>
+        <p>   <b>┖</b> Do not request personal information about older members.   </p>
+        <p> ㅤ</p>
+        <p><b>8. 🎂 No Age Questions</b> </p>
+        <p>   <b>┖</b> Respect privacy and do not ask about others' ages.   </p>
+        <p> ㅤ</p>
+        <p><b>9. 📢 No Unauthorized Promotions</b> </p>
+        <p>   <b>┖</b> Do not promote anything without prior approval from the clan leaders.   </p>
+        <p> ㅤ</p>
+        <p><b>10. 🎮 No Account Trading/Selling</b> </p>
+        <p>    <b>┖</b> Do not promote or engage in the trading or selling of accounts.   </p>
+        <p>ㅤ </p>
+        <hr>
+        <p> </p>
+        <p><b>⚠️ <u>Note</u>:</b><i> Breaking these rules may result in warnings or removal from the clan. Let’s keep the chat friendly and respectful!</i> 😊 </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alliances-card">
+    <h2>• Alliances •</h2> <!-- Заголовок вынесен за пределы скрываемого содержимого -->
+    <div class="alliances-content">
+      <div class="alliances">
+        <p>┎┄ 𝗔𝗹𝗹𝗶𝗮𝗻𝗰𝗲 <b>№</b>𝟭</p>
+        <p>┃</p>
+        <p>┠ 『ঔৣ͜͡ＩＭＭＯＲＴＡＬＳ༘♡』☄</p>
+        <p>┠ <b>[??/??/2025]</b>  •  Strength and unity are on the rise! An alliance has been formed with the clan «<b>IMT</b>», led by the player <b>Zoyaa</b>. You can reach them using ID: <u>3088079888</u>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+███████╗░█████╗░░█████╗░████████╗███████╗██████╗░
+██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+█████╗░░██║░░██║██║░░██║░░░██║░░░█████╗░░██████╔╝
+██╔══╝░░██║░░██║██║░░██║░░░██║░░░██╔══╝░░██╔══██╗
+██║░░░░░╚█████╔╝╚█████╔╝░░░██║░░░███████╗██║░░██║
+╚═╝░░░░░░╚════╝░░╚════╝░░░░╚═╝░░░╚══════╝╚═╝░░╚═╝
+-->
+  
+  <footer>
+  Official clan website • <a href="https://play.google.com/store/apps/details?id=com.sandboxol.blockymods" target="_blank">Blockman GO</a><br>
+  &copy; 2025 <strong><u>Official Ost</u></strong>. All rights reserved.
+</footer>
+
+</body>
+</html>
