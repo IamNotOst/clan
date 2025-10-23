@@ -1,0 +1,472 @@
+<!--
+██████████████████████████████████████████████
+██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒█████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▒▒███▒▒▄▀▄▀▒▒██▒▒▄▀▄▀▒▒█████
+██████▒▒▄▀▒▒▒▒▒▒▄▀▒▒███▒▒▒▒▄▀▒▒██▒▒▄▀▒▒▒▒█████
+██████▒▒▄▀▒▒██▒▒▄▀▒▒█████▒▒▄▀▄▀▒▒▄▀▄▀▒▒███████
+██████▒▒▄▀▒▒▒▒▒▒▄▀▒▒▒▒███▒▒▒▒▄▀▄▀▄▀▒▒▒▒███████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▒▒▄▀▒▒▒▒█████████
+██████▒▒▄▀▒▒▒▒▒▒▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▒▒████▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▒▒▒▒▒▒▒▒▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▄▀▄▀▄▀▄▀▄▀▄▀▒▒███████▒▒▄▀▒▒███████████
+██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████▒▒▒▒▒▒███████████
+██████████████████████████████████████████████
+██████████████████████████████████████████████
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█
+█▒▒▄▀▒▒▒▒▒▒▄▀▒▒█▒▒▄▀▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▄▀▒▒▒▒▒▒█
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▒▒█████████████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▒▒▒▒▒▒▒▒▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█▒▒▒▒▒▒▒▒▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒██▒▒▄▀▒▒█████████▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▒▒▒▒▒▒▄▀▒▒█▒▒▒▒▒▒▒▒▒▒▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█▒▒▄▀▄▀▄▀▄▀▄▀▒▒█████▒▒▄▀▒▒█████
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████▒▒▒▒▒▒█████
+██████████████████████████████████████████████
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BedWar Clan - Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --primary-light: #9d4eff;
+            --secondary: #00bfff;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f0f0f0;
+            --accent: #ff3860;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -150px;
+            left: -100px;
+            animation: float 20s infinite linear;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: -100px;
+            right: -80px;
+            animation: float 25s infinite linear reverse;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 50%;
+            left: 80%;
+            animation: float 18s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(40px, -60px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-30px, 30px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            border-radius: 2px;
+            animation: logoLine 3s ease-in-out infinite;
+        }
+
+        @keyframes logoLine {
+            0%, 100% {
+                transform: scaleX(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        /* Headings */
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--light), #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Card */
+        .card {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .card-text {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Loading icon */
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Counter */
+        .counter {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Appearance animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo, .title, .subtitle, .card, .btn {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .title { animation-delay: 0.2s; }
+        .subtitle { animation-delay: 0.4s; }
+        .card { animation-delay: 0.6s; }
+        .btn { animation-delay: 0.8s; }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                padding: 30px 20px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .title {
+                font-size: 1.7rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="bg-animation">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="logo">___BedWar___</h1>
+        <h2 class="title">Website Has Been Updated!</h2>
+        <p class="subtitle">
+            The old version of the website is no longer supported. We've moved to a new modern website 
+            with improved design and additional features.
+        </p>
+        
+        <div class="card">
+            <h3 class="card-title">What's New?</h3>
+            <p class="card-text">
+                • Completely updated design<br>
+                • Improved performance<br>
+                • New sections and information<br>
+                • Adaptation for all devices<br>
+                • Interactive elements
+            </p>
+            
+            <a href="https://officialbg.github.io/bw-clan/" class="btn" id="redirectBtn">
+                <span>Go to New Website</span>
+                <div class="loader"></div>
+            </a>
+            
+            <div class="counter">
+                <i class="fas fa-clock"></i>
+                <span>Automatic redirect in: <span id="countdown">30</span> sec.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Automatic redirect after 10 seconds
+        let countdown = 30;
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://officialbg.github.io/bw-clan/';
+            }
+        }, 1000);
+
+        // Additional button animations
+        const redirectBtn = document.getElementById('redirectBtn');
+        
+        redirectBtn.addEventListener('mouseenter', () => {
+            redirectBtn.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        redirectBtn.addEventListener('mouseleave', () => {
+            redirectBtn.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Create additional floating elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgAnimation = document.querySelector('.bg-animation');
+            
+            for (let i = 0; i < 4; i++) {
+                const shape = document.createElement('div');
+                shape.classList.add('bg-shape');
+                
+                const size = Math.random() * 100 + 50;
+                const colors = ['var(--primary)', 'var(--secondary)', 'var(--accent)'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                shape.style.background = color;
+                shape.style.top = `${Math.random() * 100}%`;
+                shape.style.left = `${Math.random() * 100}%`;
+                shape.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+                shape.style.animation = `float ${Math.random() * 20 + 15}s infinite linear ${Math.random() > 0.5 ? '' : 'reverse'}`;
+                
+                bgAnimation.appendChild(shape);
+            }
+        });
+
+        // Parallax effect for background
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+            
+            document.querySelector('.bg-animation').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body>
+  </html>
